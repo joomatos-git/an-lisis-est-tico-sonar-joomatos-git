@@ -120,11 +120,8 @@ public class AStar<A,S,C extends Comparable<C>,N extends HeuristicNode<A,S,C,N>>
                 }
 
                 N successorClose = closed.get(successorNode.state());
-                if (successorClose != null) {
-                    // Check if this path improves the cost of a closed neighbor.
-                    if (successorClose.getScore().compareTo(successorNode.getScore()) <= 0) {
-                        continue;
-                    }
+                if (successorClose != null && (successorClose.getScore().compareTo(successorNode.getScore()) <= 0)) {
+                    continue;
                 }
 
                 // In any other case, add the new successor to the open list to explore later
